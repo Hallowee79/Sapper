@@ -1,4 +1,4 @@
-package sweeper;
+package Sapper;
 
 class Matrix
 {

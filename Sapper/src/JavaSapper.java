@@ -3,13 +3,13 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import sweeper.Box;
-import sweeper.Coord;
-import sweeper.Game;
-import sweeper.Ranges;
+import Sapper.Box;
+import Sapper.Coord;
+import Sapper.Game;
+import Sapper.Ranges;
 
 
-public class JavaSweeper extends JFrame
+public class JavaSapper extends JFrame
 {
     private Game game;
     private JPanel panel;
@@ -23,10 +23,10 @@ public class JavaSweeper extends JFrame
 
     public static void main(String[] args)
     {
-        new JavaSweeper();
+        new JavaSapper();
     }
 
-    private JavaSweeper ()
+    private JavaSapper()
     {
         game = new Game(COLS, ROWS, BOMBS);
         game.start();
@@ -50,7 +50,6 @@ public class JavaSweeper extends JFrame
             {
                 super.paintComponent(g);
                 for (Coord coord : Ranges.getAllCoords())
-                    //g.drawImage((Image) game.getBox(coord).image, coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, this); //приведение типа к Image
                     g.drawImage((Image) game.getBox(coord).image, coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, IMAGE_SIZE, IMAGE_SIZE, this); //приведение типа к Image
 
             }
@@ -91,7 +90,7 @@ public class JavaSweeper extends JFrame
     private void initFrame ()
     {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Java Sweeper 2000 Volosatov");
+        setTitle("Sapper");
         setResizable(false);
         setVisible(true);
         pack(); //метод из класса JFrame устанавливает размер окна достаточный для отображения

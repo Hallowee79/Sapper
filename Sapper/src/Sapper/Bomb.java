@@ -1,10 +1,10 @@
-package sweeper;
+package Sapper;
 
 class Bomb
 {
     private Matrix bombMap;
     private int totalBombs;
-
+    //Принятия бомб
     Bomb (int totalBombs)
     {
         this.totalBombs = totalBombs;
@@ -22,14 +22,14 @@ class Bomb
     {
         return bombMap.get(coord);
     }
-
+    // Исправрения количество бомб
     private void fixBombsCount ()
     {
         int maxBombs = Ranges.getSize().x * Ranges.getSize().y /3;
         if (totalBombs > maxBombs)
             totalBombs = maxBombs;
     }
-
+    //Размешения бомб
     private void placeBomb ()
     {
         while (true)
@@ -43,7 +43,7 @@ class Bomb
         }
 
     }
-
+    //Увеличения вокруг бомбы
     private void incNumbersAroundBomb (Coord coord)
     {
         for (Coord around : Ranges.getCoordsArround(coord))

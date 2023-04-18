@@ -1,4 +1,4 @@
-package sweeper;
+package Sapper;
 
 public class Coord
 {
@@ -10,7 +10,7 @@ public class Coord
         this.x = x;
         this.y = y;
     }
-
+    //Проверка на совбадения кординат
     @Override
     public boolean equals(Object o)
     {

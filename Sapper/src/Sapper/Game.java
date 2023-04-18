@@ -1,4 +1,4 @@
-package sweeper;
+package Sapper;
 
 public class Game
 {
@@ -24,7 +24,7 @@ public class Game
        flag.start();
        state = GameStat.PLAYED;
     }
-
+    //Размешение картинки втом или ином месте
     public Box getBox (Coord coord)
     {
         if (flag.get(coord) == Box.opened)
@@ -32,21 +32,25 @@ public class Game
         else
             return flag.get(coord);
     }
-
+    //Левая кнопка мышки
     public void pressLeftButton (Coord coord)
     {
         if (gameOver ()) return;
         openBox (coord);
         checkWinner();
     }
-
+    // Проверка на Победа
     private void checkWinner ()
     {
-        if (state == GameStat.PLAYED)
+        if  (state == GameStat.PLAYED)
+        {
             if (flag.getCountClosedBoxes() == bomb.getTotalBombs())
+            {
                 state = GameStat.WINNER;
+            }
+        }
     }
-
+    //Значения
     private void openBox(Coord coord)
     {
         switch (flag.get(coord))
@@ -63,7 +67,7 @@ public class Game
 
         }
     }
-
+    //Помечает все бомбы при поражении
     private void openBombs(Coord bombed)
     {
         state = GameStat.BOMBED;
@@ -74,29 +78,28 @@ public class Game
             else
                 flag.setNobombToFlagedSafeBox (coord);
     }
-
+    //Открывает клетки вокруг бомбы
     private void openBoxesAround(Coord coord)
     {
         flag.setOpenedToBox(coord);
         for (Coord around : Ranges.getCoordsArround(coord))
             openBox(around);
     }
-
+    // Правая кнопка мыши
     public void pressRightButton(Coord coord)
     {
         if (gameOver ()) return;
         flag.toggleFlagedToBox (coord);
     }
-
+    //Проверка на Поражение
     private boolean gameOver()
     {
         if (state == GameStat.PLAYED)
             return false;
-        //start();
         return true;
     }
 
-
+    //Проверка открытия закрытых ячеек вокруг числа
     private void setOpenedToClosedBoxesAroundNumber (Coord coord)
     {
         if (bomb.get(coord) != Box.bomb)

@@ -1,4 +1,4 @@
-package sweeper;
+package Sapper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -9,7 +9,7 @@ public class Ranges
    private static ArrayList<Coord> allCoords;
    private static Random random = new Random();
 
-
+    //Установка размера
    public static void setSize (Coord _size)
    {
        size = _size;
@@ -28,18 +28,18 @@ public class Ranges
     {
        return allCoords;
     }
-
+    //Проверка кардинаты
     static boolean inRange (Coord coord)
     {
         return coord.x >= 0 && coord.x < size.x &&
                 coord.y >= 0 && coord.y < size.y;
     }
-
+    //Получения случайной кординаты
     static Coord getRandomCoord ()
     {
         return new Coord(random.nextInt(size.x), random.nextInt(size.y));
     }
-
+    //Возрашения кординат
     static ArrayList<Coord> getCoordsArround (Coord coord)
     {
        Coord around;
